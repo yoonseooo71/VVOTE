@@ -7,13 +7,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./routes/Layout";
 import Home from "./routes/Home";
 import GlobalFonts from "./style/GlobalFonts";
-
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme.light}>
       <GlobalStyle />
       <GlobalFonts />
       <BrowserRouter>

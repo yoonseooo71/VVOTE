@@ -3,21 +3,25 @@ type ColorPalette = {
 };
 
 type Theme = {
-  colors: {
-    light: ColorPalette;
-    dark: ColorPalette;
-  };
+  light: {
+    colors: ColorPalette
+  }
+  dark: {
+    colors: ColorPalette
+  }
 };
 const theme: Theme = {
-  colors: {
-    light: {
-      header: "white",
-      home: "#E9ECEF"
+    light:{
+      colors : {
+        header: "white",
+        home: "#E9ECEF"
+      },
     },
     dark: {
-      header: "black",
-      home: "#333"
+      colors: {
+        header: "black",
+        home: "#333"
+      }
     }
-  }
 };
 export default theme;

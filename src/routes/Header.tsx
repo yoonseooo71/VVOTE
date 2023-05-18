@@ -25,7 +25,8 @@ const Header = ()=>{
 const Wrapper = styled.header`
   width: 100%;
   height: 64px;
-  background-color: ${({theme})=>theme.colors.light.header};
+
+  background-color: ${({theme})=>theme.colors.header};
   display: flex;
   justify-content: space-around;
   align-items: center;
