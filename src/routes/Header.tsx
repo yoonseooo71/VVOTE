@@ -1,20 +1,17 @@
 import styled from "styled-components";
-import SearchIcon from '../Asset/images/search.svg';
-import LighModeIcon from '../Asset/images/light_mode.svg';
-import AddBoxIcon from '../Asset/images/add_box.svg'
-import ArrowIcon from '../Asset/images/arrow.svg'
 import Userimg from '../Asset/images/sampleuserimg.png'
+import { AddBoxIcon, ArrowIcon, LightModeIcon, SearchIcon } from "../style/svgComponents";
 const Header = ()=>{
   return (
     <Wrapper>
       <Title>hotissue</Title>
       <Naves>
-        <Icon src={LighModeIcon}/>
-        <Icon src={SearchIcon}/>
-        <Icon src={AddBoxIcon}/>
+        <LightModeIcon/>
+        <SearchIcon/>
+        <AddBoxIcon/>
         <User>
           <UserName>username</UserName>
-          <Arrow src={ArrowIcon}/>
+          <ArrowIcon/>
           <UserImg src={Userimg}/>
         </User>
       </Naves>
@@ -41,20 +38,11 @@ const Naves = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-const Icon = styled.img`
-  width: 28px;
-  height: 28px;
-  margin:10px;
-`
 const User = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
   margin: 0px 10px;
-`
-const Arrow = styled(Icon)`
-  width: 15px;
-  height: 15px;
 `
 const UserName = styled.span`
   font-size: 20px;

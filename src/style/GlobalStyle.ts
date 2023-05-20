@@ -5,7 +5,9 @@ const GlobalStyle = createGlobalStyle`
   ${normalize}
   *{
     box-sizing: border-box;
+    color: ${({theme})=>theme.colors.font};
   }
+  
 `
 
 export default GlobalStyle ; 

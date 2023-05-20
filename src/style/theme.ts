@@ -13,14 +13,18 @@ type Theme = {
 const theme: Theme = {
     light:{
       colors : {
-        header: "white",
-        home: "#E9ECEF"
+        font: "black",
+        header: "#FEFEFE",
+        home: "#E9ECEF",
+        icon: "black"
       },
     },
     dark: {
       colors: {
+        font: "white",
         header: "black",
-        home: "#333"
+        home: "#212426",
+        icon: "white"
       }
     }
 };
