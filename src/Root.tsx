@@ -5,15 +5,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./routes/Layout";
 import Home from "./routes/Home";
 import GlobalFonts from "./style/GlobalFonts";
-import { useEffect, useState } from "react";
+import { useAppSelector } from "./store/store";
 const Root = ()=>{
-  const [isDarkMode,setIsDarkMode] = useState<boolean>(false);
-  const changeThemeMode = (state:boolean|undefined)=>{
-    if(state === undefined) setIsDarkMode(!isDarkMode) ; 
-    else setIsDarkMode(state) ;  
-  }
-  useEffect(()=>{
-  },[])
+  const isDarkMode = useAppSelector((state)=>state.themeMode.currentMode) ;
   return (
     <ThemeProvider theme={isDarkMode? theme.dark : theme.light}>
       <GlobalStyle />
