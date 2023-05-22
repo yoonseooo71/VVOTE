@@ -4,6 +4,7 @@ import {ReactComponent as LighModeSvg} from '../Asset/images/light_mode.svg';
 import {ReactComponent as DarkModeSvg} from '../Asset/images/dark_mode.svg';
 import {ReactComponent as AddBoxSvg} from '../Asset/images/add_box.svg'
 import {ReactComponent as ArrowSvg} from '../Asset/images/arrow.svg'
+import {ReactComponent as FireSvg} from '../Asset/images/fire.svg'
 
 
 export const SearchIcon = styled(SearchSvg)`
@@ -53,4 +54,8 @@ export const ArrowIcon = styled(ArrowSvg)`
   height: 15px;
   margin:10px;
   fill: ${({theme})=>theme.colors.icon};
+`
+export const FireIcon = styled(FireSvg)`
+  width: 50px;
+  height: 50px;
 `

@@ -6,6 +6,7 @@ import Layout from "./routes/Layout";
 import Home from "./routes/Home";
 import GlobalFonts from "./style/GlobalFonts";
 import { useAppSelector } from "./store/store";
+import Login from "./routes/Login";
 const Root = ()=>{
   const isDarkMode = useAppSelector((state)=>state.themeMode.currentMode) ;
   return (
@@ -16,6 +17,7 @@ const Root = ()=>{
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
       </BrowserRouter>

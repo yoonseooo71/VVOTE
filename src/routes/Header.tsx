@@ -1,15 +1,18 @@
 import styled from "styled-components";
-import Userimg from "../Asset/images/sampleuserimg.png";
 import {
-  AddBoxIcon,
-  ArrowIcon,
   LightModeIcon,
   DarkModeIcon,
   SearchIcon,
 } from "../style/svgComponents";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { changeThemeMode } from "../store/themeModeSlice";
+import HeaderLoginUi from "../components/HeaderLoginUi";
+import HeaderNotLoginUi from "../components/HeaderNotLoginUi";
+
+
 const Header = () => {
+  const isLogin = false ; 
+
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector((state) => state.themeMode.currentMode);
   const changeThemeHandler = () => {
@@ -25,12 +28,8 @@ const Header = () => {
           <LightModeIcon onClick={changeThemeHandler} />
         )}
         <SearchIcon />
-        <AddBoxIcon />
-        <User>
-          <UserName>username</UserName>
-          <ArrowIcon />
-          <UserImg src={Userimg} />
-        </User>
+        {isLogin? <HeaderLoginUi/> : <HeaderNotLoginUi/>}
+        
       </Naves>
     </Wrapper>
   );
@@ -54,22 +53,6 @@ const Naves = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const User = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  margin: 0px 10px;
-`;
-const UserName = styled.span`
-  font-size: 20px;
-  padding-bottom: 5px;
-  border-bottom: 2px black solid;
-`;
-const UserImg = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50;
-  margin-left: 5px;
-`;
+
 
 export default Header;
