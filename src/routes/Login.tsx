@@ -18,7 +18,7 @@ const Login =()=>{
 const Wrapper = styled.div`
   width: 100%;
   height: calc(100vh - 64px);
-  background-color: ${({theme})=>theme.colors.home};
+  background-color: ${({theme})=>theme.colors.mainBackground};
   display: flex; 
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@ const LoginBox = styled.div`
   width: 600px;
   height: 400px;
   border-radius: 40px;
-  background-color: white;
+  background-color: ${({theme})=>theme.colors.subBackground};
   padding: 40px 100px;
 `
 const BoldText = styled.div`

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   border-radius: 15px;
-  background-color: #F1F3F5;
+  background-color: ${({theme})=>theme.colors.loginForm};
   padding: 0px 15px;
 `
 const Text = styled.div`
@@ -27,7 +27,7 @@ const Text = styled.div`
 const CenterLine = styled.div`
   width: 1px;
   height: 20px;
-  background-color: black;
+  background-color: ${({theme})=>theme.colors.font};
   border-radius: 0.5px;
 `
 

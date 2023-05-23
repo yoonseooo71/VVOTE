@@ -22,7 +22,7 @@ const User = styled.div`
 const UserName = styled.span`
   font-size: 20px;
   padding-bottom: 5px;
-  border-bottom: 2px black solid;
+  border-bottom: ${({theme})=>`2px ${theme.colors.font} solid`};
 `;
 const UserImg = styled.img`
   width: 40px;

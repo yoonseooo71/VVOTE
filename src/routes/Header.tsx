@@ -11,7 +11,7 @@ import HeaderNotLoginUi from "../components/HeaderNotLoginUi";
 
 
 const Header = () => {
-  const isLogin = false ; 
+  const isLogin = true ; 
 
   const dispatch = useAppDispatch();
   const isDarkMode = useAppSelector((state) => state.themeMode.currentMode);
@@ -38,7 +38,7 @@ const Header = () => {
 const Wrapper = styled.header`
   width: 100%;
   height: 64px;
-  background-color: ${({ theme }) => theme.colors.header};
+  background-color: ${({ theme }) => theme.colors.subBackground};
   display: flex;
   justify-content: space-around;
   align-items: center;
