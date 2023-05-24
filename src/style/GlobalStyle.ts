@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${({theme})=>theme.colors.font};
     transition:background-color 0.3s; 
   }
+  a {
+    text-decoration: none;
+  }
   
 `
 

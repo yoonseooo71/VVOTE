@@ -5,6 +5,8 @@ import {ReactComponent as DarkModeSvg} from '../Asset/images/dark_mode.svg';
 import {ReactComponent as AddBoxSvg} from '../Asset/images/add_box.svg'
 import {ReactComponent as ArrowSvg} from '../Asset/images/arrow.svg'
 import {ReactComponent as FireSvg} from '../Asset/images/fire.svg'
+import {ReactComponent as LogoutSvg} from '../Asset/images/logout.svg'
+
 
 
 export const SearchIcon = styled(SearchSvg)`
@@ -53,6 +55,12 @@ export const ArrowIcon = styled(ArrowSvg)`
   width: 15px;
   height: 15px;
   margin:10px;
+  fill: ${({theme})=>theme.colors.icon};
+`
+export const LogoutIcon = styled(LogoutSvg)`
+  width: 25px;
+  height: 25px;
+  padding-right: 10px;
   fill: ${({theme})=>theme.colors.icon};
 `
 export const FireIcon = styled(FireSvg)`

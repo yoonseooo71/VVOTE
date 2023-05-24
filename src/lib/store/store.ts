@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import themeModeSlice from "./themeModeSlice";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import loginSlice from "./loginSlice";
 const store = configureStore({
   reducer:{
-    themeMode : themeModeSlice.reducer
+    themeMode : themeModeSlice.reducer,
+    login : loginSlice.reducer
   } 
 })
 

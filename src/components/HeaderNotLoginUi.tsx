@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 const HeaderNotLoginUi = ()=>{
   return (
     <Wrapper>
-      <Text>로그인</Text>
+      <Link to="/login"><Text>로그인</Text></Link>
       <CenterLine/>
       <Text>회원가입</Text>
     </Wrapper>

@@ -4,23 +4,28 @@ import {
   DarkModeIcon,
   SearchIcon,
 } from "../style/svgComponents";
-import { useAppDispatch, useAppSelector } from "../store/store";
-import { changeThemeMode } from "../store/themeModeSlice";
+import { useAppDispatch, useAppSelector } from "../lib/store/store";
+import { changeThemeMode } from "../lib/store/themeModeSlice";
 import HeaderLoginUi from "../components/HeaderLoginUi";
 import HeaderNotLoginUi from "../components/HeaderNotLoginUi";
-
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  const isLogin = true ; 
-
   const dispatch = useAppDispatch();
+
   const isDarkMode = useAppSelector((state) => state.themeMode.currentMode);
+  const isLogin = useAppSelector((state) => state.login.isLogin);
+
+
   const changeThemeHandler = () => {
     dispatch(changeThemeMode());
   };
+
   return (
     <Wrapper>
-      <Title>hotissue</Title>
+      <Link to="/">
+        <Title>hotissue</Title>
+      </Link>
       <Naves>
         {isDarkMode ? (
           <DarkModeIcon onClick={changeThemeHandler} />
@@ -28,8 +33,7 @@ const Header = () => {
           <LightModeIcon onClick={changeThemeHandler} />
         )}
         <SearchIcon />
-        {isLogin? <HeaderLoginUi/> : <HeaderNotLoginUi/>}
-        
+        {isLogin ? <HeaderLoginUi /> : <HeaderNotLoginUi />}
       </Naves>
     </Wrapper>
   );
@@ -53,6 +57,5 @@ const Naves = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
 
 export default Header;
