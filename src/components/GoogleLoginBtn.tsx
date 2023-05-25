@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { signInWithGoogle } from "../lib/firebase";
+import { setLoginData, signInWithGoogle } from "../lib/firebase";
 import { useAppDispatch } from "../lib/store/store";
 import { userLogin } from "../lib/store/loginSlice";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,9 @@ const GoogleLoginBtn = ()=>{
   const handleLogin = ()=>{
     signInWithGoogle()
       .then(res=>{
-        console.log(res); 
+        const {user} = res ; 
+        console.log(user);
+        setLoginData(user);
         dispatch(userLogin());
         navigate("/") ;
       }) 

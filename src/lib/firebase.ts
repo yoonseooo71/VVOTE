@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-
+import { getAuth, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
+import {getFirestore,doc, setDoc} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,10 +13,23 @@ const firebaseConfig = {
 };
 
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const auth = getAuth() ;
-
+const db = getFirestore(app) ; 
 export const signInWithGoogle = () => {
   const googleProvider = new GoogleAuthProvider();
   return signInWithPopup(auth, googleProvider);
-};
+};  
+
+export const setLoginData = async (user: User) => {
+  try {
+    await setDoc(doc(db, "users",user.uid), {
+      email: user.email, 
+      name: user.displayName,
+      photo: user.photoURL
+    });
+    console.log("setData");
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}

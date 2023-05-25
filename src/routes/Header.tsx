@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Link to="/">
-        <Title>hotissue</Title>
+        <Title>VVOTE</Title>
       </Link>
       <Naves>
         {isDarkMode ? (
