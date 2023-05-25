@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
-import {getFirestore,doc, setDoc} from 'firebase/firestore'
+import {getFirestore,doc, setDoc, getDoc} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -21,6 +21,18 @@ export const signInWithGoogle = () => {
   return signInWithPopup(auth, googleProvider);
 };  
 
+
+export const getLoginData =async (uid:string) => {
+  const docRef = doc(db,"users",uid) ; 
+  const docSnap = await getDoc(docRef) ; 
+  if (docSnap.exists()) {
+    return docSnap.data(); 
+  } else {
+    console.log("No such document!");
+    return undefined ; 
+  }
+}
+
 export const setLoginData = async (user: User) => {
   try {
     await setDoc(doc(db, "users",user.uid), {
@@ -28,7 +40,6 @@ export const setLoginData = async (user: User) => {
       name: user.displayName,
       photo: user.photoURL
     });
-    console.log("setData");
   } catch (e) {
     console.error("Error adding document: ", e);
   }

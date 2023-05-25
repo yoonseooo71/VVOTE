@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { setLoginData, signInWithGoogle } from "../lib/firebase";
+import { getLoginData, setLoginData, signInWithGoogle } from "../lib/firebase";
 import { useAppDispatch } from "../lib/store/store";
 import { userLogin } from "../lib/store/loginSlice";
 import { useNavigate } from "react-router-dom";
@@ -9,10 +9,18 @@ const GoogleLoginBtn = ()=>{
   const dispatch = useAppDispatch() ; 
   const handleLogin = ()=>{
     signInWithGoogle()
-      .then(res=>{
+      .then(async res=>{
         const {user} = res ; 
-        console.log(user);
-        setLoginData(user);
+        const isOurUser = await getLoginData(user.uid);
+        if (isOurUser === undefined) { 
+          /** 처음 로그인 할떄 */
+          setLoginData(user);
+          console.log("first login");
+        } else {
+          /** 처음 로그인이 아닐때 */
+          console.log("our user");
+        }
+
         dispatch(userLogin());
         navigate("/") ;
       }) 
