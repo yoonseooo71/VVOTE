@@ -8,7 +8,7 @@ import GlobalFonts from "./style/GlobalFonts";
 import { useAppSelector } from "./lib/store/store";
 import Login from "./routes/Login";
 const Root = ()=>{
-  const isDarkMode = useAppSelector((state)=>state.themeMode.currentMode) ;
+  const isDarkMode = useAppSelector((state)=>state.themeMode.isDarkMode) ;
   return (
     <ThemeProvider theme={isDarkMode? theme.dark : theme.light}>
       <GlobalStyle />

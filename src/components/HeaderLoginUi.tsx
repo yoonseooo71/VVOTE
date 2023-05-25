@@ -1,19 +1,21 @@
 import styled from "styled-components";
-import Userimg from "../Asset/images/sampleuserimg.png";
 import { AddBoxIcon,ArrowIcon } from "../style/svgComponents";
 import UserPop from "./UserPop";
 import { useState } from "react";
+import { useAppSelector } from "../lib/store/store";
 const HeaderLoginUi = () =>{
-  
   const [isUserPop,setIsUserPop] = useState<boolean>(false) ; 
+
+  const userName = useAppSelector(state => state.login.name);
+  const userPhoto = useAppSelector(state => state.login.photo);
 
   return (
     <>
       <AddBoxIcon />
       <User onClick={()=>setIsUserPop(!isUserPop)}>
-        <UserName>username</UserName>
+        <UserName>{userName}</UserName>
         <ArrowIcon />
-        <UserImg src={Userimg} />
+        <UserImg src={userPhoto} referrerPolicy="no-referrer" />
         {isUserPop && <UserPop/>}
       </User>
     </>

@@ -6,20 +6,21 @@ import { useNavigate } from "react-router-dom";
 
 const GoogleLoginBtn = ()=>{
   const navigate = useNavigate(); 
+  
   const dispatch = useAppDispatch() ; 
+
   const handleLogin = ()=>{
-    signInWithGoogle()
+    /** firebase 구글 로그인 */
+    signInWithGoogle() 
       .then(async res=>{
         const {user} = res ; 
         const isOurUser = await getLoginData(user.uid);
         if (isOurUser === undefined) { 
-          /** 처음 로그인 할떄 */
+          /** 처음 로그인 할떄 firebase 데이터 베이스에 데이터 저장*/
           setLoginData(user);
-          console.log("first login");
-        } else {
-          /** 처음 로그인이 아닐때 */
-          console.log("our user");
-        }
+        } 
+        localStorage.setItem("isLogin","true"); 
+        localStorage.setItem("uid",user.uid) ; 
 
         dispatch(userLogin());
         navigate("/") ;

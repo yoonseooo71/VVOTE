@@ -1,3 +1,4 @@
+import {useEffect} from "react"
 import styled from "styled-components";
 import {
   LightModeIcon,
@@ -5,20 +6,45 @@ import {
   SearchIcon,
 } from "../style/svgComponents";
 import { useAppDispatch, useAppSelector } from "../lib/store/store";
-import { changeThemeMode } from "../lib/store/themeModeSlice";
+import { themeDark, themeWhite } from "../lib/store/themeModeSlice";
 import HeaderLoginUi from "../components/HeaderLoginUi";
 import HeaderNotLoginUi from "../components/HeaderNotLoginUi";
 import { Link } from "react-router-dom";
+import { setUserInfo, userLogin } from "../lib/store/loginSlice";
+import { getLoginData } from "../lib/firebase";
 
 const Header = () => {
   const dispatch = useAppDispatch();
 
-  const isDarkMode = useAppSelector((state) => state.themeMode.currentMode);
+  const isDarkMode = useAppSelector((state) => state.themeMode.isDarkMode);
   const isLogin = useAppSelector((state) => state.login.isLogin);
 
+  useEffect(()=>{
+    /** 유저가 로그인이 이미 되어있는지 확인 */
+    async function checkLoggedin() { 
+      const isLoggedin  = localStorage.getItem("isLogin") ; 
+      const userUid = localStorage.getItem("uid");  
+      if (isLoggedin === "true" && userUid !== null) {
+        dispatch(userLogin()); //로그인ui를 먼저띄우고 유저 데이터 값을 기다림 
+        const userInfo = await getLoginData(userUid); 
+        dispatch(setUserInfo(userInfo))//store 에 유저 정보값 넣기
+      }
+    }
+    /** 기존 테마 설정 유지 */
+    const currentTheme = localStorage.getItem("theme") ; 
+    if(currentTheme === "dark") {
+      dispatch(themeDark()); 
+    }
+    checkLoggedin(); 
+  })
 
-  const changeThemeHandler = () => {
-    dispatch(changeThemeMode());
+  const changeThemeWhite = () => {
+    dispatch(themeWhite());
+    localStorage.setItem("theme","white");
+  };
+  const changeThemeDark = () => {
+    dispatch(themeDark());
+    localStorage.setItem("theme","dark");
   };
 
   return (
@@ -28,9 +54,9 @@ const Header = () => {
       </Link>
       <Naves>
         {isDarkMode ? (
-          <DarkModeIcon onClick={changeThemeHandler} />
+          <DarkModeIcon onClick={changeThemeWhite} />
         ) : (
-          <LightModeIcon onClick={changeThemeHandler} />
+          <LightModeIcon onClick={changeThemeDark} />
         )}
         <SearchIcon />
         {isLogin ? <HeaderLoginUi /> : <HeaderNotLoginUi />}

@@ -1,21 +1,27 @@
 import { styled } from "styled-components"
-import Userimg from "../Asset/images/sampleuserimg.png";
 import { LogoutIcon } from "../style/svgComponents";
-import { useAppDispatch } from "../lib/store/store";
-import { userLogout } from "../lib/store/loginSlice";
+import { useAppDispatch, useAppSelector } from "../lib/store/store";
+import { resetUserInfo, userLogout } from "../lib/store/loginSlice";
 
 const UserPop = ()=>{
   const dispatch = useAppDispatch() ;
 
+  const userName = useAppSelector(state => state.login.name);
+  const userPhoto = useAppSelector(state => state.login.photo);
+  /** 유저로그아웃 핸들러*/
   const handleLogout = ()=>{
+    localStorage.removeItem("isLogin"); 
+    localStorage.removeItem("uid");
+    
     dispatch(userLogout());
+    dispatch(resetUserInfo());
   }
   
   return (
     <Wrapper>
       <User>
-        <UserImg src={Userimg}/>
-        <UserName>UserName</UserName>
+        <UserImg src={userPhoto} referrerPolicy="no-referrer"/>
+        <UserName>{userName}</UserName>
       </User>
       <LogoutBtn onClick={handleLogout}><LogoutIcon/>로그아웃</LogoutBtn>
     </Wrapper>

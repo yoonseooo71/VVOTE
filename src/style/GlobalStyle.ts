@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
   *{
     box-sizing: border-box;
     color: ${({theme})=>theme.colors.font};
-    transition:background-color 0.3s; 
   }
   a {
     text-decoration: none;
