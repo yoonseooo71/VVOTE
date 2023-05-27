@@ -1,7 +1,7 @@
 import { styled } from "styled-components"
 import { getLoginData, setLoginData, signInWithGoogle } from "../lib/firebase";
 import { useAppDispatch } from "../lib/store/store";
-import { userLogin } from "../lib/store/loginSlice";
+import { setUserInfo, userLogin } from "../lib/store/loginSlice";
 import { useNavigate } from "react-router-dom";
 
 const GoogleLoginBtn = ()=>{
@@ -15,14 +15,23 @@ const GoogleLoginBtn = ()=>{
       .then(async res=>{
         const {user} = res ; 
         const isOurUser = await getLoginData(user.uid);
+        /**처음 로그인하는지 체크 */
         if (isOurUser === undefined) { 
           /** 처음 로그인 할떄 firebase 데이터 베이스에 데이터 저장*/
           setLoginData(user);
         } 
+        /**가공된 유저정보 */
+        const userInfo = {
+          name : user.displayName,
+          email : user.email,
+          photo : user.photoURL
+        }
+        /**store 에 유저정보와 로그인 여부 저장 */
+        dispatch(setUserInfo(userInfo))
+        dispatch(userLogin());
+
         localStorage.setItem("isLogin","true"); 
         localStorage.setItem("uid",user.uid) ; 
-
-        dispatch(userLogin());
         navigate("/") ;
       }) 
       .catch(error=>console.error(error))
