@@ -30,11 +30,6 @@ const Header = () => {
         dispatch(setUserInfo(userInfo))//store 에 유저 정보값 넣기
       }
     }
-    /** 기존 테마 설정 유지 */
-    const currentTheme = localStorage.getItem("theme") ; 
-    if(currentTheme === "dark") {
-      dispatch(themeDark()); 
-    }
     checkLoggedin(); 
   })
 
