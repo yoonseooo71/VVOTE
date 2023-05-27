@@ -30,6 +30,7 @@ const Header = () => {
         dispatch(setUserInfo(userInfo))//store 에 유저 정보값 넣기
       }
     }
+    
     checkLoggedin(); 
   })
 
