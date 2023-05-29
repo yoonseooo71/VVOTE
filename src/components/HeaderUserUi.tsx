@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AddBoxIcon,ArrowIcon } from "../style/svgComponents";
+import { AddBoxSvg, ArrowSvg } from "../style/svgComponents";
 import UserPop from "./UserPop";
 import { useState } from "react";
 import { useAppSelector } from "../lib/store/store";
@@ -13,10 +13,12 @@ const HeaderUserUi = () =>{
     <>
       <AddBoxIcon />
       <User onClick={()=>setIsUserPop(!isUserPop)}>
-        <UserName>{userName}</UserName>
-        <ArrowIcon />
-        <UserImg src={userPhoto} referrerPolicy="no-referrer" />
+        <UserNameBox>
+          <UserName>{userName}</UserName>
+          <ArrowIcon />
+        </UserNameBox>
         {isUserPop && <UserPop/>}
+        <UserImg src={userPhoto} referrerPolicy="no-referrer" />
       </User>
     </>
   )
@@ -27,6 +29,13 @@ const User = styled.div`
   margin: 0px 10px;
   cursor: pointer;
 `;
+const UserNameBox = styled.div`
+  display: flex;
+  align-items: center;
+  @media (max-width: 767px){
+    display: none;
+  }
+`
 const UserName = styled.span`
   font-size: 15px;
   padding-bottom: 5px;
@@ -37,6 +46,21 @@ const UserImg = styled.img`
   height: 38px;
   border-radius: 50%;
   margin-left: 5px;
+`;
+
+const AddBoxIcon = styled(AddBoxSvg)`
+  width: 25px;
+  height: 25px;
+  margin: 10px;
+  fill: ${({ theme }) => theme.colors.icon};
+  cursor: pointer;
+`;
+const ArrowIcon = styled(ArrowSvg)`
+  width: 13px;
+  height: 13px;
+  margin: 5px;
+  fill: ${({ theme }) => theme.colors.icon};
+  cursor: pointer;
 `;
 
 export default HeaderUserUi ; 

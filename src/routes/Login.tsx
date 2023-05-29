@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FireIcon } from "../style/svgComponents";
+import { FireSvg } from "../style/svgComponents";
 import GoogleLoginBtn from "../components/GoogleLoginBtn";
 
 const Login =()=>{
@@ -39,4 +39,9 @@ const Text = styled.div`
   font-size: 24px;
   margin: 20px 0px 40px 0;
 `
+const FireIcon = styled(FireSvg)`
+  width: 50px;
+  height: 50px;
+`;
+
 export default Login ; 

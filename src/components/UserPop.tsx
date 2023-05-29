@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { LogoutIcon } from "../style/svgComponents";
+import { LogoutSvg } from "../style/svgComponents";
 import { useAppDispatch, useAppSelector } from "../lib/store/store";
 import { resetUserInfo, userLogout } from "../lib/store/loginSlice";
 
@@ -41,6 +41,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   cursor: default;
+  
+  @media (max-width: 767px){
+    right: 10px;
+  }
 `
 const User = styled.div`
   width: 100%;
@@ -70,4 +74,11 @@ const LogoutBtn = styled.div`
   align-items: center;
   cursor: pointer;
 `
+const LogoutIcon = styled(LogoutSvg)`
+  width: 25px;
+  height: 25px;
+  padding-right: 10px;
+  fill: ${({ theme }) => theme.colors.icon};
+  cursor: pointer;
+`;
 export default UserPop ; 
