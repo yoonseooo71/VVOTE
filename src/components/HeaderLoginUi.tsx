@@ -1,42 +1,35 @@
-import styled from "styled-components";
-import { AddBoxIcon,ArrowIcon } from "../style/svgComponents";
-import UserPop from "./UserPop";
-import { useState } from "react";
-import { useAppSelector } from "../lib/store/store";
-const HeaderLoginUi = () =>{
-  const [isUserPop,setIsUserPop] = useState<boolean>(false) ; 
+import { Link } from "react-router-dom";
+import { styled } from "styled-components";
 
-  const userName = useAppSelector(state => state.login.name);
-  const userPhoto = useAppSelector(state => state.login.photo);
-
+const HeaderLoginUi = ()=>{
   return (
-    <>
-      <AddBoxIcon />
-      <User onClick={()=>setIsUserPop(!isUserPop)}>
-        <UserName>{userName}</UserName>
-        <ArrowIcon />
-        <UserImg src={userPhoto} referrerPolicy="no-referrer" />
-        {isUserPop && <UserPop/>}
-      </User>
-    </>
+    <Wrapper>
+      <Link to="/login"><Text>로그인</Text></Link>
+      <CenterLine/>
+      <Text>회원가입</Text>
+    </Wrapper>
   )
 }
-const User = styled.div`
+
+const Wrapper = styled.div`
+  width: 150px;
+  height: 40px;
   display: flex;
   align-items: center;
-  margin: 0px 10px;
+  justify-content: space-around;
+  border-radius: 15px;
+  background-color: ${({theme})=>theme.colors.loginForm};
+  padding: 0px 15px;
+`
+const Text = styled.div`
+  font-size: 15px;
   cursor: pointer;
-`;
-const UserName = styled.span`
-  font-size: 20px;
-  padding-bottom: 5px;
-  border-bottom: ${({theme})=>`2px ${theme.colors.font} solid`};
-`;
-const UserImg = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-left: 5px;
-`;
+`
+const CenterLine = styled.div`
+  width: 1px;
+  height: 20px;
+  background-color: ${({theme})=>theme.colors.font};
+  border-radius: 0.5px;
+`
 
 export default HeaderLoginUi ; 

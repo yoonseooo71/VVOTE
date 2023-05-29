@@ -6,8 +6,8 @@ import {
 } from "../style/svgComponents";
 import { useAppDispatch, useAppSelector } from "../lib/store/store";
 import { themeDark, themeWhite } from "../lib/store/themeModeSlice";
+import HeaderUserUi from "../components/HeaderUserUi";
 import HeaderLoginUi from "../components/HeaderLoginUi";
-import HeaderNotLoginUi from "../components/HeaderNotLoginUi";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
           <LightModeIcon onClick={changeThemeDark} />
         )}
         <SearchIcon />
-        {isLogin ? <HeaderLoginUi /> : <HeaderNotLoginUi />}
+        {isLogin ? <HeaderUserUi /> : <HeaderLoginUi />}
       </Naves>
     </Wrapper>
   );
@@ -52,7 +52,7 @@ const Wrapper = styled.header`
   align-items: center;
 `;
 const Title = styled.h1`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
 `;
 const Naves = styled.div`
