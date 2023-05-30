@@ -46,21 +46,24 @@ const GoogleLoginBtn = ()=>{
 
 const Wrapper = styled.div`
   width: 400px;
-  height: 70px;
+  height: 56px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 14px;
   border: 1px #AFAFAF solid;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @media (max-width: 767px){
+    width: 100%;
+  }
 `
 const GoogleIcon = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
 `
 const Text = styled.div`
-  font-size: 24px;
+  font-size: 15px;
   color: #AFAFAF ;
   margin-left: 20px;
 `

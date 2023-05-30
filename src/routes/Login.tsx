@@ -24,24 +24,29 @@ const Wrapper = styled.div`
   align-items: center;
 `
 const LoginBox = styled.div`
-  width: 600px;
-  height: 400px;
+  width: 500px;
+  height: 350px;
   border-radius: 40px;
   background-color: ${({theme})=>theme.colors.subBackground};
-  padding: 40px 100px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 767px){
+    width: 90%;
+    padding: 24px;
+  }
 `
 const BoldText = styled.div`
-  font-size: 36px;
+  font-size: 27px;
   font-weight: bold;
-  margin: 10px 0px;
 `
 const Text = styled.div`
-  font-size: 24px;
-  margin: 20px 0px 40px 0;
+  font-size: 21px;
 `
 const FireIcon = styled(FireSvg)`
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
 `;
 
 export default Login ; 
