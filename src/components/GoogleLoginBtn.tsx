@@ -45,7 +45,7 @@ const GoogleLoginBtn = ()=>{
 }
 
 const Wrapper = styled.div`
-  width: 400px;
+  width: 100%;
   height: 56px;
   background-color: white;
   border-radius: 14px;
@@ -54,9 +54,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  @media (max-width: 767px){
-    width: 100%;
-  }
 `
 const GoogleIcon = styled.img`
   width: 24px;
