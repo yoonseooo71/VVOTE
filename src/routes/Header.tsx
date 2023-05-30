@@ -7,7 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../lib/store/store";
 import { themeDark, themeWhite } from "../lib/store/themeModeSlice";
 import HeaderUserUi from "../components/HeaderUserUi";
-import HeaderLoginUi from "../components/HeaderLoginUi";
+import HeaderLoginBtn from "../components/HeaderLoginBtn";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
           <LightModeIcon onClick={changeThemeDark} />
         )}
         <SearchIcon />
-        {isLogin ? <HeaderUserUi /> : <HeaderLoginUi />}
+        {isLogin ? <HeaderUserUi /> : <HeaderLoginBtn />}
       </Naves>
     </Wrapper>
   );
