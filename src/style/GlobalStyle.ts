@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     color: ${({theme})=>theme.colors.font};
   }
+  body {
+    
+    background-color: ${({theme})=>theme.colors.mainBackground};
+  }
   a {
     text-decoration: none;
   }

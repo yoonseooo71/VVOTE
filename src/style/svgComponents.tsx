@@ -5,8 +5,10 @@ import { ReactComponent as AddBoxSvg } from "../Asset/images/add_box.svg";
 import { ReactComponent as ArrowSvg } from "../Asset/images/arrow.svg";
 import { ReactComponent as FireSvg } from "../Asset/images/fire.svg";
 import { ReactComponent as LogoutSvg } from "../Asset/images/logout.svg";
+import { ReactComponent as TrendSvg} from "../Asset/images/trend.svg" ;
+import { ReactComponent as RecentSvg} from "../Asset/images/recent.svg" ;
 
-export {SearchSvg,LighModeSvg,DarkModeSvg,AddBoxSvg,ArrowSvg,FireSvg,LogoutSvg} ; 
+export {SearchSvg,LighModeSvg,DarkModeSvg,AddBoxSvg,ArrowSvg,FireSvg,LogoutSvg,TrendSvg,RecentSvg} ; 
 
 
 
