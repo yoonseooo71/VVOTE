@@ -46,6 +46,9 @@ const UserImg = styled.img`
   height: 38px;
   border-radius: 50%;
   margin-left: 5px;
+  @media (max-width: 767px){
+    margin: 0;
+  }
 `;
 
 const AddBoxIcon = styled(AddBoxSvg)`
@@ -54,6 +57,9 @@ const AddBoxIcon = styled(AddBoxSvg)`
   margin: 10px;
   fill: ${({ theme }) => theme.colors.icon};
   cursor: pointer;
+  @media (max-width: 767px){
+    margin: 5px;
+  }
 `;
 const ArrowIcon = styled(ArrowSvg)`
   width: 13px;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   LighModeSvg,
   DarkModeSvg,
@@ -50,10 +50,6 @@ const Wrapper = styled.header`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  @media (max-width: 767px){
-    justify-content: space-between;
-    padding: 0 20px ;
-  }
 `;
 const Title = styled.h1`
   font-size: 25px;
@@ -66,20 +62,24 @@ const Naves = styled.div`
   align-items: center;
 `;
 
+const turnIcon = keyframes`
+  from {
+    transform: rotate(0.5turn);
+  }
+  to {
+    transform: rotate(0);
+  }
+`
+
 const LightModeIcon = styled(LighModeSvg)`
   width: 25px;
   height: 25px;
   margin: 10px;
   fill: ${({ theme }) => theme.colors.icon};
   cursor: pointer;
-  animation: turnIcon 1s;
-  @keyframes turnIcon {
-    from {
-      transform: rotate(0.5turn);
-    }
-    to {
-      transform: rotate(0);
-    }
+  animation: ${turnIcon} 1s;
+  @media (max-width: 767px){
+    margin: 5px;
   }
 `;
 
@@ -89,14 +89,9 @@ const DarkModeIcon = styled(DarkModeSvg)`
   margin: 10px;
   fill: ${({ theme }) => theme.colors.icon};
   cursor: pointer;
-  animation: turnIcon 1s;
-  @keyframes turnIcon {
-    from {
-      transform: rotate(-90deg);
-    }
-    to {
-      transform: rotate(0);
-    }
+  animation: ${turnIcon} 1s;
+  @media (max-width: 767px){
+    margin: 5px;
   }
 `;
 
@@ -106,6 +101,9 @@ const SearchIcon = styled(SearchSvg)`
   margin: 10px;
   fill: ${({ theme }) => theme.colors.icon};
   cursor: pointer;
+  @media (max-width: 767px){
+    margin: 5px;
+  }
 
 `;
 
