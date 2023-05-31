@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     
     background-color: ${({theme})=>theme.colors.mainBackground};
+    overflow-y: scroll;
   }
   a {
     text-decoration: none;

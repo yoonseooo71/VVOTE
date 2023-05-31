@@ -29,19 +29,29 @@ const Home = ()=>{
 
 const Wrapper = styled.div`
   width: 100%;
-  height: calc(100vh - 64px);
-  padding: 24px 10% 0 10%;
   background-color: ${({theme})=>theme.colors.mainBackground};
-  @media (max-width: 767px){
-    padding: 12px 3% 0 3%;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 const Category = styled.div`
-  width: 100%;
+  width: 1500px;
   height: 35px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 12.5px;
+  margin: 25px 0;
+  @media all and (max-width: 1500px){
+    width: 1125px;
+  }
+  @media all and (max-width: 1125px){
+    width: 750px;
+  }
+  @media all and (max-width: 750px){
+    width: 375px;
+  }
+  
 `
 const CategoryLinks = styled.div`
   display: flex;

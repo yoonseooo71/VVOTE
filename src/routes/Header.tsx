@@ -27,18 +27,20 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <Link to="/">
-        <Title>VVOTE</Title>
-      </Link>
-      <Naves>
-        {isDarkMode ? (
-          <DarkModeIcon onClick={changeThemeWhite} />
-        ) : (
-          <LightModeIcon onClick={changeThemeDark} />
-        )}
-        <SearchIcon />
-        {isLogin ? <HeaderUserUi /> : <HeaderLoginBtn />}
-      </Naves>
+      <Container>
+        <Link to="/">
+          <Title>VVOTE</Title>
+        </Link>
+        <Naves>
+          {isDarkMode ? (
+            <DarkModeIcon onClick={changeThemeWhite} />
+          ) : (
+            <LightModeIcon onClick={changeThemeDark} />
+          )}
+          <SearchIcon />
+          {isLogin ? <HeaderUserUi /> : <HeaderLoginBtn />}
+        </Naves>
+      </Container>
     </Wrapper>
   );
 };
@@ -48,13 +50,26 @@ const Wrapper = styled.header`
   height: 64px;
   background-color: ${({ theme }) => theme.colors.subBackground};
   display: flex;
+  justify-content: center;
+`;
+const Container = styled.div`
+  width: 1500px;
+  height: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10%;
-  @media (max-width: 767px){
-    padding: 0 3%;
+  padding: 0 12.5px;
+  @media all and (max-width: 1500px){
+    width: 1125px;
   }
-`;
+  @media all and (max-width: 1125px){
+    width: 750px;
+  }
+  @media all and (max-width: 750px){
+    width: 375px;
+  }
+  
+`
 const Title = styled.h1`
   font-size: 25px;
   font-weight: bold;
