@@ -1,16 +1,26 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { styled } from "styled-components";
 import { RecentSvg, TrendSvg } from "../style/svgComponents";
+import { useEffect, useState } from "react";
 
 const Home = ()=>{
+
+  const location = useLocation() ; 
+  const [isRecent, setIsRecent] = useState(false) ;
+
+  useEffect(()=>{
+    if (location.pathname === "/recent") setIsRecent(true) ;
+    else setIsRecent(false) ; 
+  },[location])
+
   return(
     <Wrapper>
       <Category>
         <CategoryLinks>
-          <CategoryLink to="/trend"><TrentIcon/>트랜드</CategoryLink>
-          <CategoryLink to="/recent"><RecentIcon/>최신</CategoryLink>
+          <CategoryLink to="/" current={(!isRecent).toString()}><TrentIcon/>트랜드</CategoryLink>
+          <CategoryLink to="/recent" current={isRecent.toString()}><RecentIcon/>최신</CategoryLink>
         </CategoryLinks>
-        <Bar/>
+        <Bar move={isRecent.toString()}/>
       </Category>
       <Outlet/>
     </Wrapper>
@@ -28,7 +38,7 @@ const Wrapper = styled.div`
 `
 const Category = styled.div`
   width: 100%;
-  height: 40px;
+  height: 35px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,9 +46,11 @@ const Category = styled.div`
 const CategoryLinks = styled.div`
   display: flex;
 `
-const CategoryLink = styled(Link)`
+const CategoryLink = styled(Link)<{current:string}>`
   width: 110px;
   font-size: 1.2em;
+  font-weight: ${({current}) =>current ==="true" ? "bold" : "500"};
+  opacity: ${({current}) =>current ==="true" ? "100%" : "70%"};
   color: ${({theme})=>theme.colors.font};
   display: flex;
   align-items: center;
@@ -58,9 +70,11 @@ const RecentIcon = styled(RecentSvg)`
   fill: ${({theme})=>theme.colors.font};
 `
 
-const Bar = styled.div`
+const Bar = styled.div<{move:string}>`
   width: 110px;
-  height: 2px;
+  height: 3px;
   background-color: ${({theme})=>theme.colors.font};
+  transition: transform 0.4s;
+  transform: ${({move}) =>{if(move ==="true") return "translate(110px,0)"}};
 `
 export default Home ;

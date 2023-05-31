@@ -46,7 +46,7 @@ const Root = ()=>{
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />}>
-              <Route path="/trend" element={<Trend/>}/>
+              <Route path="/" element={<Trend/>}/>
               <Route path="/recent" element={<Recent/>}/>
             </Route>
             <Route path="/login" element={<Login />} />
