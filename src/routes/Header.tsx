@@ -48,8 +48,12 @@ const Wrapper = styled.header`
   height: 64px;
   background-color: ${({ theme }) => theme.colors.subBackground};
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 10%;
+  @media (max-width: 767px){
+    padding: 0 3%;
+  }
 `;
 const Title = styled.h1`
   font-size: 25px;
