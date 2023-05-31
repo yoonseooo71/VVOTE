@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import { themeDark } from "./lib/store/themeModeSlice";
 import { getLoginData } from "./lib/firebase";
 import { setUserInfo, userLogin } from "./lib/store/loginSlice";
+import Trend from "./routes/Trend";
+import Recent from "./routes/Recent";
 const Root = ()=>{
   const dispatch = useAppDispatch(); 
   const isDarkMode = useAppSelector((state)=>state.themeMode.isDarkMode) ;
@@ -43,7 +45,10 @@ const Root = ()=>{
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />}>
+              <Route path="/trend" element={<Trend/>}/>
+              <Route path="/recent" element={<Recent/>}/>
+            </Route>
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>

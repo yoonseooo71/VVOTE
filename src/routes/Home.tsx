@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { styled } from "styled-components";
 import { RecentSvg, TrendSvg } from "../style/svgComponents";
 
@@ -12,6 +12,7 @@ const Home = ()=>{
         </CategoryLinks>
         <Bar/>
       </Category>
+      <Outlet/>
     </Wrapper>
   )
 }
