@@ -33,6 +33,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
 `
 const Category = styled.div`
   width: 1400px;

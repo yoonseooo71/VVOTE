@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   background-color: white;
   padding: 10px;
   background-clip: content-box;
+  border-radius: 20px;
 
   @media all and (max-width: 1125px){
     flex: 0 0 50%  ;

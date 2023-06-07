@@ -33,6 +33,7 @@ const Wrapper = styled.div`
   height: 150px;
   background-color: ${({theme})=>theme.colors.subBackground};
   position: absolute;
+  z-index: 10;
   top: 70px;
   border-radius: 10px;
   padding: 15px;
