@@ -35,21 +35,18 @@ const Wrapper = styled.div`
   align-items: center;
 `
 const Category = styled.div`
-  width: 1500px;
+  width: 1400px;
   height: 35px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0 12.5px;
+  padding: 0 10px;
   margin: 25px 0;
-  @media all and (max-width: 1500px){
-    width: 1125px;
+  @media all and (max-width: 1400px){
+    width: 1050px;
   }
-  @media all and (max-width: 1125px){
-    width: 750px;
-  }
-  @media all and (max-width: 750px){
-    width: 375px;
+  @media all and (max-width: 1050px){
+    width: 90%;
   }
   
 `

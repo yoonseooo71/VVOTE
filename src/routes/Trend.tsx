@@ -19,18 +19,15 @@ const Trend = ()=>{
 }
 
 const Wrapper = styled.div`
-  width: 1500px;
+  width: 1400px;
   background-color: green;
   display: flex;
   flex-wrap: wrap;
-  @media all and (max-width: 1500px){
-    width: 1125px;
+  @media all and (max-width: 1400px){
+    width: 1050px;
   }
-  @media all and (max-width: 1125px){
-    width: 750px;
-  }
-  @media all and (max-width: 750px){
-    width: 375px;
+  @media all and (max-width: 1050px){
+    width: 90%;
   }
   
 `

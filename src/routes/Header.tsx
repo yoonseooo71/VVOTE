@@ -53,22 +53,18 @@ const Wrapper = styled.header`
   justify-content: center;
 `;
 const Container = styled.div`
-  width: 1500px;
+  width: 1400px;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 12.5px;
-  @media all and (max-width: 1500px){
-    width: 1125px;
+  padding: 0 10px;
+  @media all and (max-width: 1400px){
+    width: 1050px;
   }
-  @media all and (max-width: 1125px){
-    width: 750px;
+  @media all and (max-width: 1050px){
+    width: 90%;
   }
-  @media all and (max-width: 750px){
-    width: 375px;
-  }
-  
 `
 const Title = styled.h1`
   font-size: 25px;
