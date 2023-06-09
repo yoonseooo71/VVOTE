@@ -1,17 +1,31 @@
 import { styled } from "styled-components"
-
-const Post = ()=>{
+type Iprops = {
+  postData: {
+    title: string,
+    optionA: string,
+    optionB: string, 
+    date : string, 
+    commant : number,
+    totalVotes:number,
+    AVotes: number,
+    BVotes:number
+  }
+}
+const Post = ({postData}:Iprops)=>{
+  /**계시물 투표 점유율 계산 */
+  const AShare = postData.AVotes / postData.totalVotes * 100; 
+  const BShare = postData.BVotes / postData.totalVotes * 100;
   return (
     <Wrapper>
       <PostContainer> 
-        <Title>JavaScript 와 Java 어떤게 좋나요</Title>
-        <PostOption color="orange"><span>A</span>: JavaScript</PostOption>
-        <PostOption color="lightblue"><span>B</span>: Java</PostOption>
+        <Title>{postData.title}</Title>
+        <PostOption color="orange"><span>A</span>: {postData.optionA}</PostOption>
+        <PostOption color="lightblue"><span>B</span>: {postData.optionB}</PostOption>
         <Graph>
-          <OptionA share="30%"/>
-          <OptionB share="70%"/>
+          <OptionA share={`${AShare}%`}/>
+          <OptionB share={`${BShare}%`}/>
         </Graph>
-        <Text fontSize="12px">2023-05-31 • 댓글 5개</Text>
+        <Text fontSize="12px">{postData.date} • 댓글 {postData.commant}개</Text>
       </PostContainer>
     </Wrapper>
   )

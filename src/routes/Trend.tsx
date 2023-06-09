@@ -1,28 +1,36 @@
 import { styled } from "styled-components";
 import Post from "../components/Post";
-
+const dummydata= {
+  title: "JavaScript 와 Java 어떤게 좋나요",
+  optionA: "JavaScript",
+  optionB: "Java", 
+  date : "2023-05-31", 
+  commant : 5,
+  totalVotes:777,
+  AVotes:444,
+  BVotes:333,
+}
 const Trend = ()=>{
   return (
     <Wrapper>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
+      <Post postData={dummydata}/>
     </Wrapper>
   )
 }
