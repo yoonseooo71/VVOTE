@@ -18,6 +18,7 @@ const theme: Theme = {
         subBackground: "#FEFEFE",
         loginForm: "#F1F3F5",
         icon: "black",
+        post: "#FEFEFE",
       },
     },
     dark: {
@@ -27,6 +28,7 @@ const theme: Theme = {
         subBackground: "#242526",
         loginForm: "#090A11",
         icon: "white",
+        post: "#242526",
       }
     }
 };

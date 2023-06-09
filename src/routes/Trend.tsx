@@ -23,7 +23,6 @@ const Trend = ()=>{
       <Post/>
       <Post/>
       <Post/>
-      <Post/>
     </Wrapper>
   )
 }
