@@ -3,13 +3,15 @@ import { styled } from "styled-components"
 const Post = ()=>{
   return (
     <Wrapper>
-      <PostContainer>
+      <PostContainer> 
         <Title>JavaScript 와 Java 어떤게 좋나요</Title>
         <PostOption color="orange"><span>A</span>: JavaScript</PostOption>
         <PostOption color="lightblue"><span>B</span>: Java</PostOption>
-        <Graph></Graph>
-        <Text fontSize="14px">💬 댓글 5개</Text>
-        <Text fontSize="14px">2023-05-31</Text>
+        <Graph>
+          <OptionA share="30%"/>
+          <OptionB share="70%"/>
+        </Graph>
+        <Text fontSize="12px">2023-05-31 • 댓글 5개</Text>
       </PostContainer>
     </Wrapper>
   )
@@ -45,13 +47,22 @@ const Text = styled.div<{fontSize:string}>`
   color: ${({theme})=>theme.colors.font} ;
 `
 const Title = styled.div`
-  font-size: 20px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
   color: ${({theme})=>theme.colors.font} ; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 ` 
 
 const PostOption = styled.div<{color:string}>`
-  font-size: 16px;
+  width: 100%;
+  font-size: 14px;
   color: ${({theme})=>theme.colors.font} ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   span {
     color: ${({color})=>color};
     font-weight: bold;
@@ -60,8 +71,18 @@ const PostOption = styled.div<{color:string}>`
 const Graph = styled.div`
   width: 100%;
   height: 20px;
-  background-color: orange;
   border-radius: 10px;
   align-self: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+`
+const OptionA = styled.div<{share:string}>`
+  width: ${({share})=>share};
+  height: 100%;
+  background-color: orange;
+`
+const OptionB = styled(OptionA)`
+  background-color: lightblue;
 `
 export default Post ;
