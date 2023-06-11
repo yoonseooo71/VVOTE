@@ -9,6 +9,7 @@ const Home = ()=>{
   const [isRecent, setIsRecent] = useState(false) ;
 
   useEffect(()=>{
+    /** 렌더링 중인 라우터가 trend 인지 recent인지 확인 */
     if (location.pathname === "/recent") setIsRecent(true) ;
     else setIsRecent(false) ; 
   },[location])
