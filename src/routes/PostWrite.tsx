@@ -3,7 +3,7 @@ import { ArrowBackSvg } from "../style/svgComponents";
 import {useState} from "react"
 import { useNavigate } from "react-router-dom";
 function PostWrite() {
-  const [isA,setIsA] = useState(true) ; 
+  const [isOptionA,setIsOptionA] = useState(true) ; 
     const navigate = useNavigate() ; 
   return (
     <Wrapper>
@@ -21,10 +21,13 @@ function PostWrite() {
             <OptionText>옵션 B</OptionText>
             <OptionInput/>
           </Option>
-          <SelectBox>
-            <SelectOptionA isA={isA} onClick={()=>setIsA(!isA)}>A</SelectOptionA>
-            <SelectOptionB isA={!isA} onClick={()=>setIsA(!isA)}>B</SelectOptionB>
-          </SelectBox>
+          <Option>
+            <OptionText>본인의 선택</OptionText>
+            <SelectBox>
+              <SelectOptionA select={isOptionA.toString()} onClick={()=>{if (!isOptionA) setIsOptionA(!isOptionA)}}>A</SelectOptionA>
+              <SelectOptionB select={(!isOptionA).toString()} onClick={()=>{if (isOptionA) setIsOptionA(!isOptionA)}}>B</SelectOptionB>
+            </SelectBox>
+          </Option>
         </WriteContainer>
         <BottomContainer>
           <BackBox onClick={()=>{navigate(-1)}}>
@@ -88,7 +91,7 @@ const Option = styled.div`
 `
 
 const OptionText = styled.div`
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
   color: ${({theme})=>theme.colors.font} ; 
   margin-bottom: 5px;
@@ -101,7 +104,7 @@ const OptionInput = styled.input`
   border-radius: 5px;
   background-color: ${({theme})=>theme.colors.subBackground};
   &:focus {
-    border: 2px solid #1e6091;
+    border: 2px solid #42a5f5;
     outline: none;
   }
 `
@@ -110,7 +113,7 @@ const SelectBox = styled.div`
   height: 45px;
   display: flex;
 `
-const SelectOptionA = styled.div<{isA:boolean}>`
+const SelectOptionA = styled.div<{select:string}>`
   flex: 0 0 50%;
   height: 100%;
   border: 2px  solid #52b69a;
@@ -118,13 +121,14 @@ const SelectOptionA = styled.div<{isA:boolean}>`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
-  border-radius: 15px 0px 0px 15px;
-  background-color: ${({isA,theme})=>isA?"#1e6091" :theme.colors.subBackground};
+  font-size: 24px;
+  border-radius: 10px 0px 0px 10px;
+  background-color: ${({select,theme})=>select === "true"?"#52b69a" :theme.colors.subBackground};
+  color: ${({select,theme})=>select === "true"? "#e3e3e3" :theme.colors.font};
 ` 
 
 const SelectOptionB = styled(SelectOptionA)`
-  border-radius: 0px 15px 15px 0px; 
+  border-radius: 0px 10px 10px 0px; 
   border: 2px  solid #52b69a;
   border-left: none;
 ` 
@@ -148,7 +152,7 @@ const WriteBtn = styled.button`
   background-color: ${({theme})=>theme.colors.subBackground};
   border: 2px solid #52b69a ;
   &:active {
-    border: 2px solid #1e6091;
+    border: 2px solid #42a5f5;
   }
 `
 export default PostWrite ; 
