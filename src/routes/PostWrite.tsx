@@ -125,6 +125,7 @@ const SelectOptionA = styled.div<{select:string}>`
   border-radius: 10px 0px 0px 10px;
   background-color: ${({select,theme})=>select === "true"?"#52b69a" :theme.colors.subBackground};
   color: ${({select,theme})=>select === "true"? "#e3e3e3" :theme.colors.font};
+  cursor: pointer;
 ` 
 
 const SelectOptionB = styled(SelectOptionA)`
@@ -135,6 +136,7 @@ const SelectOptionB = styled(SelectOptionA)`
 const BackBox = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `
 const BackIcon = styled(ArrowBackSvg)`
   width: 32px;
@@ -151,6 +153,7 @@ const WriteBtn = styled.button`
   border-radius: 5px;
   background-color: ${({theme})=>theme.colors.subBackground};
   border: 2px solid #52b69a ;
+  cursor: pointer;
   &:active {
     border: 2px solid #42a5f5;
   }
