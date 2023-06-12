@@ -13,6 +13,7 @@ import { getLoginData } from "./lib/firebase";
 import { setUserInfo, userLogin } from "./lib/store/loginSlice";
 import Trend from "./routes/Trend";
 import Recent from "./routes/Recent";
+import PostWrite from "./routes/PostWrite";
 const Root = ()=>{
   const dispatch = useAppDispatch(); 
   const isDarkMode = useAppSelector((state)=>state.themeMode.isDarkMode) ;
@@ -46,11 +47,12 @@ const Root = ()=>{
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />}>
-              <Route path="/" element={<Trend/>}/>
-              <Route path="/recent" element={<Recent/>}/>
+              <Route path="" element={<Trend/>}/>
+              <Route path="recent" element={<Recent/>}/>
             </Route>
             <Route path="/login" element={<Login />} />
           </Route>
+          <Route path="/write" element={<PostWrite/>}/>
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

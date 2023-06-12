@@ -7,8 +7,9 @@ import { ReactComponent as FireSvg } from "../Asset/images/fire.svg";
 import { ReactComponent as LogoutSvg } from "../Asset/images/logout.svg";
 import { ReactComponent as TrendSvg} from "../Asset/images/trend.svg" ;
 import { ReactComponent as RecentSvg} from "../Asset/images/recent.svg" ;
+import { ReactComponent as ArrowBackSvg} from "../Asset/images/arrow_back.svg"
 
-export {SearchSvg,LighModeSvg,DarkModeSvg,AddBoxSvg,ArrowSvg,FireSvg,LogoutSvg,TrendSvg,RecentSvg} ; 
+export {SearchSvg,LighModeSvg,DarkModeSvg,AddBoxSvg,ArrowSvg,FireSvg,LogoutSvg,TrendSvg,RecentSvg, ArrowBackSvg} ; 
 
 
 

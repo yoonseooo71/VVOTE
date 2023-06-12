@@ -3,6 +3,7 @@ import { AddBoxSvg, ArrowSvg } from "../style/svgComponents";
 import UserPop from "./UserPop";
 import { useState } from "react";
 import { useAppSelector } from "../lib/store/store";
+import { Link } from "react-router-dom";
 const HeaderUserUi = () =>{
   const [isUserPop,setIsUserPop] = useState<boolean>(false) ; 
 
@@ -11,7 +12,7 @@ const HeaderUserUi = () =>{
 
   return (
     <>
-      <AddBoxIcon />
+      <Link to="/write"><AddBoxIcon /></Link>
       <User onClick={()=>setIsUserPop(!isUserPop)}>
         <UserNameBox>
           <UserName>{userName}</UserName>
