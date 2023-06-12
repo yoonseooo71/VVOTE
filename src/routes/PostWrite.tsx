@@ -1,25 +1,46 @@
 import { styled } from "styled-components";
 import { ArrowBackSvg } from "../style/svgComponents";
-import {useState} from "react"
+import { useState,useRef } from "react"
 import { useNavigate } from "react-router-dom";
+type IpostDom = {
+  [key:string] : null | HTMLInputElement,
+}
+
+
 function PostWrite() {
   const [isOptionA,setIsOptionA] = useState(true) ; 
-    const navigate = useNavigate() ; 
+  const [postData,setPostData] = useState({
+    title: undefined,
+    optionA: undefined,
+    optionB: undefined,
+    totalVotes: 0,
+    AVotes: 0,
+    BVotes: 0,
+    commant: 0,
+    date: undefined
+  });
+  const navigate = useNavigate() ; 
+  const postDom = useRef<IpostDom>({
+    title:null,
+    optionA:null,
+    optionB:null
+  });
+  console.log(postDom.current);
   return (
     <Wrapper>
       <Container>
         <WriteContainer>
           <Option>
             <OptionText>제목</OptionText>
-            <OptionInput/>
+            <OptionInput ref={(el:HTMLInputElement) => postDom.current.title = el}/>
           </Option>
           <Option>
             <OptionText>옵션 A</OptionText>
-            <OptionInput/>
+            <OptionInput ref={(el:HTMLInputElement) => postDom.current.optionA = el}/>
           </Option>
           <Option>
             <OptionText>옵션 B</OptionText>
-            <OptionInput/>
+            <OptionInput ref={(el:HTMLInputElement) => postDom.current.optionB = el}/>
           </Option>
           <Option>
             <OptionText>본인의 선택</OptionText>
