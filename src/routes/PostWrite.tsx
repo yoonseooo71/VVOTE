@@ -2,30 +2,46 @@ import { styled } from "styled-components";
 import { ArrowBackSvg } from "../style/svgComponents";
 import { useState,useRef } from "react"
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 type IpostDom = {
   [key:string] : null | HTMLInputElement,
 }
 
-
-function PostWrite() {
+function PostWrite() {  
   const [isOptionA,setIsOptionA] = useState(true) ; 
-  const [postData,setPostData] = useState({
-    title: undefined,
-    optionA: undefined,
-    optionB: undefined,
-    totalVotes: 0,
-    AVotes: 0,
-    BVotes: 0,
-    commant: 0,
-    date: undefined
-  });
   const navigate = useNavigate() ; 
   const postDom = useRef<IpostDom>({
     title:null,
     optionA:null,
     optionB:null
   });
-  console.log(postDom.current);
+
+  function submitHandler(){
+    const title = postDom.current.title?.value ; 
+    const optionA = postDom.current.optionA?.value ; 
+    const optionB = postDom.current.optionB?.value ;
+    if (title && optionA && optionB) {
+      const postData = {
+        id: uuidv4(),
+        title: title,
+        optionA: optionA,
+        optionB: optionB,
+        totalVotes: 1,
+        AVotes: 0,
+        BVotes: 0,
+        commant: 0,
+        date: Date(),
+      }
+      if (isOptionA) postData.AVotes += 1 ;
+      else postData.BVotes += 1 ;  
+
+      console.log(postData) ; 
+    } else {
+      alert("빈공간이 없는지 다시 확인해 주세요.");
+    }
+     
+  }
+
   return (
     <Wrapper>
       <Container>
@@ -55,7 +71,7 @@ function PostWrite() {
             <BackIcon/>
             <Text>나가기</Text>
           </BackBox>
-          <WriteBtn>작성하기</WriteBtn>
+          <WriteBtn onClick={submitHandler}>작성하기</WriteBtn>
         </BottomContainer>
       </Container>
       <Background/>
