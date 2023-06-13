@@ -3,8 +3,20 @@ import { ArrowBackSvg } from "../style/svgComponents";
 import { useState,useRef } from "react"
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import { setPostData } from "../lib/firebase";
 type IpostDom = {
   [key:string] : null | HTMLInputElement,
+}
+export type IpostData = { 
+  id: string,
+  title: string,
+  optionA: string,
+  optionB: string,
+  totalVotes: number,
+  AVotes: number,
+  BVotes: number,
+  commant: number,
+  date: string,
 }
 
 function PostWrite() {  
@@ -21,7 +33,7 @@ function PostWrite() {
     const optionA = postDom.current.optionA?.value ; 
     const optionB = postDom.current.optionB?.value ;
     if (title && optionA && optionB) {
-      const postData = {
+      const postData:IpostData = {
         id: uuidv4(),
         title: title,
         optionA: optionA,
@@ -34,8 +46,13 @@ function PostWrite() {
       }
       if (isOptionA) postData.AVotes += 1 ;
       else postData.BVotes += 1 ;  
-
-      console.log(postData) ; 
+      setPostData(postData)
+        .then(()=>{
+          navigate(-1);
+        })
+        .catch((errer)=>{
+          alert("error:"+errer);
+        })
     } else {
       alert("빈공간이 없는지 다시 확인해 주세요.");
     }
