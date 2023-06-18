@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
-import {getFirestore,doc, setDoc, getDoc} from 'firebase/firestore'
+import {getFirestore,doc, setDoc, getDoc, query, collection, orderBy, limit, getDocs, startAfter, DocumentData, Query} from 'firebase/firestore'
 import { IpostData } from "../routes/PostWrite";
 
 const firebaseConfig = {
@@ -54,4 +54,38 @@ export async function setPostData(data:IpostData) {
   } catch (e) {
     console.error("Error adding document: ", e);
   }
+}
+
+type Idata = {
+  docSnap: null | DocumentData,
+  nextThunk: null | Query,
+  error : boolean
+}
+
+export async function getPostData(currentQuery:any) {
+  const data:Idata = {
+    docSnap: null,
+    nextThunk: null,
+    error : false
+  }; 
+  try {
+    const docQuery = currentQuery === null ? query(collection(db, "posts"), orderBy("date","desc"), limit(1)) : currentQuery;
+    const docSnap = await getDocs(docQuery);
+  
+    const lastVisible = docSnap.docs[docSnap.docs.length-1];
+  
+    const nextThunk = query(collection(db, "posts"),
+      orderBy("date","desc"),
+      startAfter(lastVisible),
+      limit(1));
+    
+    data.docSnap = docSnap ; 
+    data.nextThunk = nextThunk; 
+    data.error = false ; 
+  } catch(err) {
+    data.docSnap = null ; 
+    data.nextThunk = null; 
+    data.error = true ; 
+  }
+  return data; 
 }
