@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FireSvg } from "../style/svgComponents";
+import { FireSvg } from "../Asset/style/svgComponents";
 import GoogleLoginBtn from "../components/GoogleLoginBtn";
 
 const Login =()=>{

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AddBoxSvg, ArrowSvg } from "../style/svgComponents";
+import { AddBoxSvg, ArrowSvg } from "../Asset/style/svgComponents";
 import UserPop from "./UserPop";
 import { useState } from "react";
 import { useAppSelector } from "../lib/store/store";

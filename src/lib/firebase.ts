@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth';
 import {getFirestore,doc, setDoc, getDoc, query, collection, orderBy, limit, getDocs, startAfter, DocumentData, Query} from 'firebase/firestore'
-import { IpostData } from "../routes/PostWrite";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -46,15 +45,15 @@ export const setLoginData = async (user: User) => {
   }
 }
 
-export async function setPostData(data:IpostData) {
-  try {
-    await setDoc(doc(db, "posts",data.id), {
-      ...data
-    });
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
+// export async function setPostData(data:IpostData) {
+//   try {
+//     await setDoc(doc(db, "posts",data.id), {
+//       ...data
+//     });
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
+// }
 
 type Idata = {
   docSnap: null | DocumentData,

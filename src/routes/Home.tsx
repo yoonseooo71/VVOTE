@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { styled } from "styled-components";
-import { RecentSvg, TrendSvg } from "../style/svgComponents";
+import { RecentSvg, TrendSvg } from "../Asset/style/svgComponents";
 import { useEffect, useState } from "react";
 
 const Home = ()=>{

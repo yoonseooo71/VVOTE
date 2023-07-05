@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { LogoutSvg } from "../style/svgComponents";
+import { LogoutSvg } from "../Asset/style/svgComponents";
 import { useAppDispatch, useAppSelector } from "../lib/store/store";
 import { resetUserInfo, userLogout } from "../lib/store/loginSlice";
 
@@ -10,11 +10,17 @@ const UserPop = ()=>{
   const userPhoto = useAppSelector(state => state.login.photo);
   /** 유저로그아웃 핸들러*/
   const handleLogout = ()=>{
-    localStorage.removeItem("isLogin"); 
-    localStorage.removeItem("uid");
+    fetch('http://localhost:8080/logout',{
+      method: 'POST',
+      credentials: 'include',
+    }).then(()=>{
+      dispatch(userLogout());
+      dispatch(resetUserInfo());
+    }).catch((err)=>{
+      alert("로그아웃 에러")
+      console.error(err);
+    })
     
-    dispatch(userLogout());
-    dispatch(resetUserInfo());
   }
   
   return (

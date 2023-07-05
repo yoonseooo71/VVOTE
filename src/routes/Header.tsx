@@ -3,7 +3,7 @@ import {
   LighModeSvg,
   DarkModeSvg,
   SearchSvg,
-} from "../style/svgComponents";
+} from "../Asset/style/svgComponents";
 import { useAppDispatch, useAppSelector } from "../lib/store/store";
 import { themeDark, themeWhite } from "../lib/store/themeModeSlice";
 import HeaderUserUi from "../components/HeaderUserUi";
