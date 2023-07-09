@@ -2,12 +2,11 @@ import { useState, useEffect} from "react";
 import { styled } from "styled-components";
 import Post from "../components/Post";
 // import { getPostData } from "../lib/firebase";
-import { DocumentData, Query } from "firebase/firestore";
 
 type IpostList = JSX.Element[] ; 
 
 const Trend = ()=>{
-  const [nextQuery,setNextQuery] = useState<null | Query>(null);
+  const [nextQuery,setNextQuery] = useState(null);
 
   const [postList,setPostList] = useState<IpostList>([]); 
 

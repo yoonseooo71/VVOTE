@@ -22,7 +22,7 @@ const Root = ()=>{
 
     async function checkLoggedin() {
       try {
-        const res = await fetch('http://localhost:8080/checkLogin',{
+        const res = await fetch('http://localhost:8080/users/user-data',{
           method: 'GET',
           credentials: 'include'
         })

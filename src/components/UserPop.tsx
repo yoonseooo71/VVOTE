@@ -10,7 +10,7 @@ const UserPop = ()=>{
   const userPhoto = useAppSelector(state => state.login.photo);
   /** 유저로그아웃 핸들러*/
   const handleLogout = ()=>{
-    fetch('http://localhost:8080/logout',{
+    fetch('http://localhost:8080/users/logout',{
       method: 'POST',
       credentials: 'include',
     }).then(()=>{
